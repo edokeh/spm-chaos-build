@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var chaosBuild = require('..');
+var program = require('commander');
+
+program.usage('[dirname]').option('-c, --config-file [filename]', 'seajs config file: [filename]');
+
+program.parse(process.argv);
+
+chaosBuild(program);
