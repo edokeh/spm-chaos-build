@@ -1,7 +1,7 @@
 {
     "name" : "spm-chaos-build",
     "description" : "Build SeaJS Business Modules by Chaos's way.",
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     "homepage" : "https://github.com/edokeh/spm-chaos-build",
     "repository" : {
         "type" : "git",
@@ -17,7 +17,7 @@
         }
     ],
     "bin" : {
-        "spm-pl" : "bin/spm-chaos-build"
+        "spm-chaos-build" : "bin/spm-chaos-build"
     },
     "keywords" : [
         "spmplugin"
