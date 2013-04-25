@@ -3,7 +3,10 @@
 var chaosBuild = require('..');
 var program = require('commander');
 
-program.usage('[dirname]').option('-c, --config-file [filename]', 'seajs config file: [filename]');
+program.usage('[dir] [options]')
+    .option('-C, --config-file [filename]', 'seajs config file: [filename]')
+    .option('-O, --output-directory [dir]', 'build output directory: [dist], SeaJS common modules should be here')
+    .option('--gzip-all', 'gzip all files in output directory, or gzip only [dir]');
 
 program.parse(process.argv);
 
