@@ -5,8 +5,8 @@ var program = require('commander');
 
 program.usage('[dir] [options]')
     .option('-C, --config-file [filename]', 'seajs config file: [filename]')
-    .option('-O, --output-directory [dir]', 'build output directory: [dist], SeaJS common modules should be here')
-    .option('--gzip-all', 'gzip all files in output directory, or gzip only [dir]');
+    .option('-O, --output-directory [dist]', 'build output directory: [dist], SeaJS common modules should be here')
+    .option('--gzip [gzipConfig]', '"--gzip all" will gzip all file in [dist], "--gzip current" will only gzip [dir] ');
 
 program.parse(process.argv);
 

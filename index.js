@@ -13,18 +13,21 @@ exports = module.exports = function (options) {
             grunt.initConfig(config);
             loadTasks();
 
-            grunt.registerInitTask(
-                'build', [
-                    'clean:dist', // delete dist direcotry first
-                    'transport:spm',  // src/* -> .build/src/*
-                    'concat:relative',  // .build/src/* -> .build/dist/*.js
-                    'concat:all',
-                    'uglify:js',  // .build/dist/*.js -> .build/dist/*.js
-                    'md5:js', // .build/dist/*.js -> dist/*-md5.js
-                    'compress', // dist/*-md5.js -> dist/*-md5.js.gz
-                    'clean:spm',
-                    'modify-config'
-                ]);
+            var taskList = [
+                'clean:dist', // delete dist direcotry first
+                'transport:spm',  // src/* -> .build/src/*
+                'concat:relative',  // .build/src/* -> .build/dist/*.js
+                'concat:all',
+                'uglify:js',  // .build/dist/*.js -> .build/dist/*.js
+                'md5:js', // .build/dist/*.js -> dist/*-md5.js
+                'clean:spm',
+                'modify-config'
+            ];
+
+            if (options.gzip === 'all' || options.gzip === 'current') {
+                taskList.push('compress'); // dist/*-md5.js -> dist/*-md5.js.gz
+            }
+            grunt.registerInitTask('build', taskList);
         });
     }
 }
