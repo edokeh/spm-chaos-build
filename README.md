@@ -7,7 +7,9 @@
 ## Getting Started
 
 这是一个 Spm2 的插件，使用一种自定义的方式来打包 (build) 业务模块（不是标准模块哦）
+
 打包的方式请参见此文 http://chaoskeh.com/blog/how-to-build-seajs-business-module-by-spm2.html
+
 一个简单的例子参见这里 https://github.com/edokeh/spm-chaos-build-example
 
 ## Install
