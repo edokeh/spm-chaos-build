@@ -22,4 +22,16 @@ module.exports = function (grunt) {
         grunt.file.write(this.data.filename, code);
         grunt.log.writeln('File "' + this.data.filename + '" modified.');
     });
+
+    grunt.registerMultiTask('spm-newline', function () {
+        grunt.file.recurse(this.data.dist, function (f) {
+            var extname = path.extname(f);
+            if (extname === '.js' || extname === '.css') {
+                var text = grunt.file.read(f);
+                if (!/\n$/.test(text)) {
+                    grunt.file.write(f, text + '\n');
+                }
+            }
+        });
+    });
 };

@@ -8,7 +8,11 @@ exports = module.exports = function (options) {
     if (!grunt.file.isFile(dirname, 'package.json')) {
         grunt.log.error('can not find package.json in `' + dirname + '`!');
     } else {
-        grunt.invokeTask('build', options, function (grunt) {
+        grunt.task.options({'done': function() {
+            grunt.log.writeln('success build finished.');
+        }});
+
+        grunt.invokeTask('chaos-build', options, function (grunt) {
             var config = getConfig(dirname, options);
             grunt.initConfig(config);
             loadTasks();
@@ -21,13 +25,14 @@ exports = module.exports = function (options) {
                 'uglify:js',  // .build/dist/*.js -> .build/dist/*.js
                 'md5:js', // .build/dist/*.js -> dist/*-md5.js
                 'clean:spm',
-                'modify-config'
+                'spm-newline',
+                'modify-config',
             ];
 
             if (options.gzip === 'all' || options.gzip === 'current') {
                 taskList.push('compress'); // dist/*-md5.js -> dist/*-md5.js.gz
             }
-            grunt.registerInitTask('build', taskList);
+            grunt.registerInitTask('chaos-build', taskList);
         });
     }
 }
