@@ -14,7 +14,7 @@
 
 ## Install
 
-请先确保你已经安装了最新的 NodeJS & git
+请先确保你已经安装了最新的 NodeJS
 
     $ npm install spm -g
     $ npm install spm-chaos-build -g

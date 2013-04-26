@@ -3,7 +3,7 @@ var grunt = require('spm-grunt');
 var getConfig = require('./lib/config').getConfig;
 
 exports = module.exports = function (options) {
-    var dirname = options.args[0];
+    var dirname = options.args[0] || '';
 
     if (!grunt.file.isFile(dirname, 'package.json')) {
         grunt.log.error('can not find package.json in `' + dirname + '`!');
