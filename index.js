@@ -5,17 +5,15 @@ var getConfig = require('./lib/config').getConfig;
 exports = module.exports = function (options) {
     var dirname = options.args[0] || '';
 
-    if (!grunt.file.isFile(dirname, 'package.json')) {
-        grunt.log.error('can not find package.json in `' + dirname + '`!');
-    } else {
-        grunt.task.options({'done': function() {
-            grunt.log.writeln('success build finished.');
-        }});
+    grunt.task.options({'done' : function () {
+        grunt.log.writeln('success build finished.');
+    }});
 
-        grunt.invokeTask('chaos-build', options, function (grunt) {
+    grunt.invokeTask('chaos-build', options, function (grunt) {
+        try {
             var config = getConfig(dirname, options);
             grunt.initConfig(config);
-            loadTasks();
+            loadTasks(grunt);
 
             var taskList = [
                 'clean:dist', // delete dist direcotry first
@@ -33,11 +31,13 @@ exports = module.exports = function (options) {
                 taskList.push('compress'); // dist/*-md5.js -> dist/*-md5.js.gz
             }
             grunt.registerInitTask('chaos-build', taskList);
-        });
-    }
+        } catch (e) {
+            grunt.log.error(e);
+        }
+    });
 }
 
-function loadTasks() {
+function loadTasks(grunt) {
     // load built-in tasks
     [
         'grunt-cmd-transport',
@@ -59,3 +59,4 @@ function loadTasks() {
 }
 
 exports.loadTasks = loadTasks;
+exports.getConfig = getConfig;
