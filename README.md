@@ -35,3 +35,48 @@ Options
     $ spm chaos-build example -C seajs-config.js --gzip current
     $ spm chaos-build example -C seajs-config.js -O ../modules
     $ spm chaos-build example -C seajs-config.js -O libs --gzip all
+    
+    
+## 自定义任务
+
+与 spm build 一样，支持通过目录下的 Gruntfile.js 来自定义任务，示例代码如下
+
+```
+var chaosBuild = require('spm-chaos-build');
+
+module.exports = function (grunt) {
+    chaosBuild.loadTasks(grunt);
+
+    var config = chaosBuild.getConfig('javascripts', {
+        outputDirectory : 'javascripts/sea-modules',
+        gzip : 'all'
+    });
+    grunt.initConfig(config);
+
+    grunt.registerTask('write-manifest', function () {
+        var mapArr = grunt.config.get('md5map');
+        var family = config.family;
+        grunt.file.write('seajs-map.json', JSON.stringify(mapArr, null, '\t'));
+    });
+
+    grunt.registerTask('chaos-build', [
+        'clean:dist', // delete dist direcotry first
+        'transport:spm',  // src/* -> .build/src/*
+        'concat:relative',  // .build/src/* -> .build/dist/*.js
+        'concat:all',
+        'uglify:js',  // .build/dist/*.js -> .build/dist/*.js
+        'md5:js', // .build/dist/*.js -> dist/*-md5.js
+        'clean:spm',
+        'spm-newline',
+        'compress',
+        'write-manifest'
+    ]);
+};
+```
+
+## History
+
+### 0.2.0
+* 如果你不喜欢目录的名字，可以在 package.json 中增加 family 项
+* 支持输出目录位于业务模块目录内
+* 支持 Gruntfile 的自定义任务
