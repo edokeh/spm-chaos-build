@@ -41,7 +41,7 @@ Options
 
 与 spm build 一样，支持通过目录下的 Gruntfile.js 来自定义任务，示例代码如下
 
-```
+```javascript
 var chaosBuild = require('spm-chaos-build');
 
 module.exports = function (grunt) {
