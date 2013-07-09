@@ -1,6 +1,6 @@
 # spm-chaos-build
 
-> Build SeaJS Business Modules by Chaos's way.
+> Build Sea.js Business Modules by Chaos's way.
 
 -----
 
@@ -8,13 +8,13 @@
 
 这是一个 Spm2 的插件，使用一种自定义的方式来打包 (build) 业务模块（不是标准模块哦）
 
-打包的方式请参见此文 http://chaoskeh.com/blog/how-to-build-seajs-business-module-by-spm2.html
+打包的方式请参见[如何使用 Spm2 压缩合并业务模块](http://chaoskeh.com/blog/how-to-build-seajs-business-module-by-spm2.html)
 
 一个简单的例子参见这里 https://github.com/edokeh/spm-chaos-build-example
 
 ## Install
 
-请先确保你已经安装了最新的 NodeJS
+请先确保你已经安装了最新的 Node.js
 
     $ npm install spm -g
     $ npm install spm-chaos-build -g
@@ -25,8 +25,8 @@
 
 Options
 
-* **-C**         指定 SeaJS 的配置文件，build 完成后会将 MD5 的 MAP 规则写入这个文件
-* **-O**         指定 build 的输出目录，这个目录应该是 SeaJS 的标准模块目录，里面应该包含业务代码所依赖的标准模块（如 jQuery），可省略此参数，缺省为 sea-modules 目录
+* **-C**         指定 Sea.js 的配置文件，build 完成后会将 MD5 的 MAP 规则写入这个文件
+* **-O**         指定 build 的输出目录，这个目录应该是 Sea.js 的标准模块目录，里面应该包含业务代码所依赖的标准模块（如 jQuery），可省略此参数，缺省为 sea-modules 目录
 * **--gzip**  是否压缩输出目录下所有的文件，参数接受 all/current ，分别表示压缩输出目录下所有文件或只压缩此次生成的文件
  
 ### Example
@@ -75,6 +75,10 @@ module.exports = function (grunt) {
 ```
 
 ## History
+
+### 0.2.3
+* 将依赖的 grunt-cmd-transport， grunt-cmd-concat 更新至最新版本
+* 默认支持对 handlebars 后缀文件的打包支持，规则同 grunt-cmd-transport ，如需指定 handlebars 的模块 ID ，可以在 package.json 的 spm.alias 中配置
 
 ### 0.2.0
 * 如果你不喜欢目录的名字，可以在 package.json 中增加 family 项
