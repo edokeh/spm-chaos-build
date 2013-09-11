@@ -24,7 +24,7 @@ exports = module.exports = function (options) {
                 'md5:js', // .build/dist/*.js -> dist/*-md5.js
                 'clean:spm',
                 'spm-newline',
-                'modify-config',
+                'modify-config'
             ];
 
             if (options.gzip === 'all' || options.gzip === 'current') {
