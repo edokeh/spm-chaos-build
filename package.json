@@ -1,7 +1,7 @@
 {
   "name": "spm-chaos-build",
   "description": "Build Sea.js Business Modules by Chaos's way.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://github.com/edokeh/spm-chaos-build",
   "repository": {
     "type": "git",
@@ -27,15 +27,15 @@
     "uninstall": "node scripts/uninstall.js"
   },
   "dependencies": {
-    "grunt-cmd-transport": "~0.2.9",
-    "grunt-cmd-concat": "~0.2.5",
-    "grunt-contrib-uglify": "~0.1.2",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-cssmin": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-compress": "~0.5.0",
+    "grunt-cmd-transport": "~0.4.1",
+    "grunt-cmd-concat": "~0.2.7",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.6.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.6.0",
     "grunt-md5": "~0.1.10",
-    "spm-grunt": "~0.1.2",
-    "commander": "~1.1.1"
+    "spm-grunt": "~0.1.7",
+    "commander": "~2.1.0"
   }
 }

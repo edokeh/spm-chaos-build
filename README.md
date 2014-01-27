@@ -74,7 +74,26 @@ module.exports = function (grunt) {
 };
 ```
 
+从 0.2.4 开始支持更细粒度的 concat 配置，如
+
+```javascript
+var config = chaosBuild.getConfig('javascripts', {
+    outputDirectory : 'javascripts/sea-modules',
+    gzip : 'all'
+});
+config.concat.relative = [
+  "test/a.js",
+  {"test/b.js": ["test/b.js", "template/*.html.js"]},
+  "test/c.js"
+];
+```
+
 ## History
+
+### 0.2.4
+
+* 支持更细粒度的 concat 规则配置
+* 将依赖的 grunt-cmd-transport， grunt-cmd-concat 更新至最新版本
 
 ### 0.2.3
 * 将依赖的 grunt-cmd-transport， grunt-cmd-concat 更新至最新版本
