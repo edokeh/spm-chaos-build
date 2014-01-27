@@ -90,6 +90,10 @@ config.concat.relative = [
 
 ## History
 
+### 0.2.5
+
+Fix bug
+
 ### 0.2.4
 
 * 支持更细粒度的 concat 规则配置
